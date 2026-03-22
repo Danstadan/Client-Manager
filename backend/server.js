@@ -1,7 +1,7 @@
 const { supabase } = require('./supabaseclient.js');
 const express = require("express");
 const cors = require("cors");
-const clientRoutes = require("./Routes/Clients.js");
+const clientRoutes = require("./routes/clients.js");
 
 const app = express();
 
