@@ -5,10 +5,15 @@ const clientRoutes = require("./routes/clients.js");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({origin :"https://client-manager-xjkf.onrender.com/clients"}));
 app.use(express.json());
 
 app.use("/clients", clientRoutes);
+
+// backend/server.js
+app.get("/", (req, res) => {
+  res.json({ message: "Backend is live!" });
+});
 
 const PORT = process.env.PORT || 5000;
 

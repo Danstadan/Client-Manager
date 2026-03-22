@@ -16,7 +16,7 @@ export default function AddClient() {
     console.log('Sending client:', client)
 
     try {
-      const res = await fetch('http://localhost:5000/clients', {
+      const res = await fetch('https://client-manager-xjkf.onrender.com/clients', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(client),

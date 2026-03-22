@@ -57,7 +57,7 @@ const UpdateClientList = ({ clients, setClients }: Props) => {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/clients/${formData.id}`,
+        `https://client-manager-xjkf.onrender.com/clients/${formData.id}`,
         {
           method: "PUT",
           headers: {
