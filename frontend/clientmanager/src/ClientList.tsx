@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 interface Client {
   id: number;
   name: string;
@@ -17,7 +19,7 @@ type Props = {
 function ClientList({ clients, setClients }: Props) {
 
   const fetchClients = async () => {
-    const res = await fetch("https://client-manager-xjkf.onrender.com/clients");
+    const res = await fetch(`${API_URL}/clients`);
     const data = await res.json();
     setClients(data);
   };

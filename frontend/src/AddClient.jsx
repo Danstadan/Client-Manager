@@ -1,6 +1,8 @@
 // src/AddClient.jsx
 import { useState } from 'react'
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function AddClient() {
   const [name, setName] = useState('')
   const [business, setBusiness] = useState('')
@@ -13,7 +15,7 @@ export default function AddClient() {
     console.log('Sending client:', client)
 
     try {
-      const res = await fetch('https://client-manager-xjkf.onrender.com/clients', {
+      const res = await fetch(`${API_URL}/clients`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(client),
@@ -27,12 +29,14 @@ export default function AddClient() {
         setName('')
         setBusiness('')
         setPhone('')
+        console.log("API URL:", import.meta.env.BACKEND_API_URL);
       } else {
         alert('Error adding client: ' + data.error)
       }
     } catch (err) {
       console.error('Fetch error:', err)
       alert('Error connecting to backend')
+      console.log (err)
     }
   }
 

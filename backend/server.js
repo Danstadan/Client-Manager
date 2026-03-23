@@ -5,15 +5,20 @@ const clientRoutes = require("./routes/clients.js");
 
 const app = express();
 
-app.use(cors({origin :"https://client-manager-xjkf.onrender.com/clients"}));
+require("dotenv").config();
+
+const allowedOrigin = process.env.FRONTEND_URL;
+
+app.use(cors({
+  origin: allowedOrigin,
+  methods: ["GET","POST","PUT","DELETE","OPTIONS"], // include OPTIONS for preflight
+  credentials: true
+}));
+// app.use(cors());
+
 app.use(express.json());
 
-app.use("/clients", clientRoutes);
-
-// backend/server.js
-app.get("/", (req, res) => {
-  res.json({ message: "Backend is live!" });
-});
+app.use("/clients", clientRoutes); 
 
 const PORT = process.env.PORT || 5000;
 

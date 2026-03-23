@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 type Client = {
   id: number;
   name: string;
@@ -57,7 +59,7 @@ const UpdateClientList = ({ clients, setClients }: Props) => {
 
     try {
       const res = await fetch(
-        `https://client-manager-xjkf.onrender.com/clients/${formData.id}`,
+        `${API_URL}/clients/${formData.id}`,
         {
           method: "PUT",
           headers: {
