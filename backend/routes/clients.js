@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const supabase = require("../supabaseclient")
+const { supabase } = require("../supabaseclient")
 //const db = require("../db");
 
 router.get("/", async (req, res) => {
@@ -68,10 +68,10 @@ router.delete("/:id", async (req, res) => {
   try {
   const { id } = req.params;
 
-  const {error} =  await supabase
-  .from ("cllients")  
-  .delete()
-  .wq("id",id)
+    const { error } = await supabase
+    .from("clients")
+    .delete()
+    .eq("id", id);
 
   if(error) throw error
   // ("DELETE FROM clients WHERE id=$1", [id]);
