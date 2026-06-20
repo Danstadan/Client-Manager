@@ -91,52 +91,70 @@ const UpdateClientList = ({ clients, setClients }: Props) => {
 
   return (
     <div>
-      <h2>Clients</h2>
+      <div className="page-header">
+        <h2>Update Clients</h2>
+        <p>Click edit to update a client's details.</p>
+      </div>
 
       {clients.map((client) => (
-        <div key={client.id} style={{ marginBottom: "10px" }}>
+        <div key={client.id} className="update-item">
           {editingClient?.id === client.id ? (
             // ✏️ EDIT MODE
             <div>
+              <label htmlFor={`name-${client.id}`}>Name</label>
               <input
+                id={`name-${client.id}`}
                 name="name"
                 value={formData?.name || ""}
                 onChange={handleChange}
               />
+
+              <label htmlFor={`business-${client.id}`}>Business</label>
               <input
+                id={`business-${client.id}`}
                 name="business"
                 value={formData?.business || ""}
                 onChange={handleChange}
               />
+
+              <label htmlFor={`phone-${client.id}`}>Phone</label>
               <input
+                id={`phone-${client.id}`}
                 name="phone"
                 value={formData?.phone || ""}
                 onChange={handleChange}
               />
+
+              <label htmlFor={`email-${client.id}`}>Email</label>
               <input
+                id={`email-${client.id}`}
                 name="email"
                 value={formData?.email || ""}
                 onChange={handleChange}
               />
+
+              <label htmlFor={`service-${client.id}`}>Service</label>
               <input
+                id={`service-${client.id}`}
                 name="service"
                 value={formData?.service || ""}
                 onChange={handleChange}
               />
+
               <div className="actions">
-              <button onClick={updateClient} disabled={loading}>
-                {loading ? "Saving..." : "Save"}
-              </button>
-              <button onClick={handleCancel} disabled={loading}>
-                Cancel
-              </button>
+                <button className="btn btn-primary" onClick={updateClient} disabled={loading}>
+                  {loading ? "Saving..." : "Save"}
+                </button>
+                <button className="btn btn-secondary" onClick={handleCancel} disabled={loading}>
+                  Cancel
+                </button>
               </div>
             </div>
           ) : (
             // 👁️ VIEW MODE
-            <div>
+            <div className="update-item-view">
               <p>
-                {client.name} - {client.business}
+                <strong>{client.name}</strong> — {client.business}
               </p>
               <button className="btn btn-success" onClick={() => handleEdit(client)}>
                 Edit

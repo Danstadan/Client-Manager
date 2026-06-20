@@ -378,6 +378,21 @@ input:focus-visible {
   gap: var(--space-4);
 }
 
+.update-item label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.update-item label:first-of-type {
+  margin-top: 0;
+}
+
 .update-item input {
   font-family: var(--font-body);
   font-size: 14px;
